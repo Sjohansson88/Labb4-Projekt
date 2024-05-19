@@ -1,0 +1,6 @@
+@SUT23_Labb4_HostAddress = http://localhost:5030
+
+GET {{SUT23_Labb4_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
