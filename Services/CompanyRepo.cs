@@ -89,14 +89,12 @@ namespace SUT23_Labb4.Services
             }
         }
 
-        public async Task<IEnumerable<BookingHistory>> GetBookingHistory(int bookingId)
+        public async Task<IEnumerable<BookingHistory>> GetBookingHistory()
         {
             try
             {
-                
                 var bookingHistory = await _dbContext.BookingHistories
-                    .Where(bh => bh.BookingId == bookingId)
-                    .OrderByDescending(bh => bh.ChangedAt) 
+                    .OrderByDescending(bh => bh.ChangedAt)
                     .ToListAsync();
 
                 return bookingHistory;

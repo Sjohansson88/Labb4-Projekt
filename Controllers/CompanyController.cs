@@ -112,16 +112,16 @@ namespace SUT23_Labb4.Controllers
         }
 
 
-        [HttpGet("GetBookingHistory/{bookingId}")]
-        public async Task<IActionResult> GetBookingHistory(int bookingId)
+        [HttpGet("GetAllBookingHistory")]
+        public async Task<IActionResult> GetAllBookingHistory()
         {
             try
             {
-                var bookingHistory = await _dbContext.GetBookingHistory(bookingId);
+                var bookingHistory = await _dbContext.GetBookingHistory();
 
                 if (bookingHistory == null || !bookingHistory.Any())
                 {
-                    return NotFound(new { message = "No booking history found for the specified booking ID" });
+                    return NotFound(new { message = "No booking history found" });
                 }
 
                 return Ok(bookingHistory);

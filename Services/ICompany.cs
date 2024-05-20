@@ -9,7 +9,7 @@ namespace SUT23_Labb4.Services
         Task DeleteBooking(int bookingId, string deletedBy);
         Task<IEnumerable<Appointment>> GetCompanyBookingsForMonth(int companyId, int year, int month);
         Task<IEnumerable<Appointment>> GetCompanyBookingsForWeek(int companyId, int year, int weekNumber);
-        Task<IEnumerable<BookingHistory>> GetBookingHistory(int bookingId);
+        Task<IEnumerable<BookingHistory>> GetBookingHistory();
 
     }
 }
