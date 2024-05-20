@@ -12,8 +12,8 @@ using SUT23_Labb4.Data;
 namespace SUT23_Labb4.Migrations
 {
     [DbContext(typeof(BookingDbContext))]
-    [Migration("20240514092626_Initial Create")]
-    partial class InitialCreate
+    [Migration("20240520181927_Initial create")]
+    partial class Initialcreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -42,6 +42,9 @@ namespace SUT23_Labb4.Migrations
                     b.Property<DateTime>("EndTime")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("StartTime")
                         .HasColumnType("datetime2");
 
@@ -60,6 +63,7 @@ namespace SUT23_Labb4.Migrations
                             CompanyId = 1,
                             CustomerId = 1,
                             EndTime = new DateTime(2024, 5, 15, 11, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 0,
                             StartTime = new DateTime(2024, 5, 15, 10, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -68,8 +72,70 @@ namespace SUT23_Labb4.Migrations
                             CompanyId = 2,
                             CustomerId = 2,
                             EndTime = new DateTime(2024, 5, 16, 14, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 0,
                             StartTime = new DateTime(2024, 5, 16, 13, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            AppointmentId = 3,
+                            CompanyId = 1,
+                            CustomerId = 1,
+                            EndTime = new DateTime(2024, 5, 25, 13, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 0,
+                            StartTime = new DateTime(2024, 5, 25, 11, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            AppointmentId = 4,
+                            CompanyId = 3,
+                            CustomerId = 3,
+                            EndTime = new DateTime(2024, 5, 26, 14, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 0,
+                            StartTime = new DateTime(2024, 5, 26, 13, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            AppointmentId = 5,
+                            CompanyId = 2,
+                            CustomerId = 4,
+                            EndTime = new DateTime(2024, 5, 27, 16, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 0,
+                            StartTime = new DateTime(2024, 5, 27, 14, 0, 0, 0, DateTimeKind.Unspecified)
                         });
+                });
+
+            modelBuilder.Entity("SUT23_Labb4Models.BookingHistory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("BookingId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("ChangedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ChangedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("NewEndTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("NewStartTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("OldEndTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("OldStartTime")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("BookingHistories");
                 });
 
             modelBuilder.Entity("SUT23_Labb4Models.Company", b =>
@@ -99,6 +165,11 @@ namespace SUT23_Labb4.Migrations
                         {
                             CompanyId = 2,
                             Name = "Breareds vårdcentral"
+                        },
+                        new
+                        {
+                            CompanyId = 3,
+                            Name = "Wim Hof Terapi"
                         });
                 });
 
@@ -135,6 +206,18 @@ namespace SUT23_Labb4.Migrations
                             CustomerId = 2,
                             Email = "bjorn@example.com",
                             Name = "Björn Goop"
+                        },
+                        new
+                        {
+                            CustomerId = 3,
+                            Email = "stig@example.com",
+                            Name = "Stig H Johansson"
+                        },
+                        new
+                        {
+                            CustomerId = 4,
+                            Email = "erik@example.com",
+                            Name = "Erik Adielsson"
                         });
                 });
 

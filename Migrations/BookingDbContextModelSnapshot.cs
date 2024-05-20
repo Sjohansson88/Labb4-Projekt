@@ -39,6 +39,9 @@ namespace SUT23_Labb4.Migrations
                     b.Property<DateTime>("EndTime")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("StartTime")
                         .HasColumnType("datetime2");
 
@@ -57,6 +60,7 @@ namespace SUT23_Labb4.Migrations
                             CompanyId = 1,
                             CustomerId = 1,
                             EndTime = new DateTime(2024, 5, 15, 11, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 0,
                             StartTime = new DateTime(2024, 5, 15, 10, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -65,6 +69,7 @@ namespace SUT23_Labb4.Migrations
                             CompanyId = 2,
                             CustomerId = 2,
                             EndTime = new DateTime(2024, 5, 16, 14, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 0,
                             StartTime = new DateTime(2024, 5, 16, 13, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -73,6 +78,7 @@ namespace SUT23_Labb4.Migrations
                             CompanyId = 1,
                             CustomerId = 1,
                             EndTime = new DateTime(2024, 5, 25, 13, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 0,
                             StartTime = new DateTime(2024, 5, 25, 11, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -81,6 +87,7 @@ namespace SUT23_Labb4.Migrations
                             CompanyId = 3,
                             CustomerId = 3,
                             EndTime = new DateTime(2024, 5, 26, 14, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 0,
                             StartTime = new DateTime(2024, 5, 26, 13, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -89,6 +96,7 @@ namespace SUT23_Labb4.Migrations
                             CompanyId = 2,
                             CustomerId = 4,
                             EndTime = new DateTime(2024, 5, 27, 16, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 0,
                             StartTime = new DateTime(2024, 5, 27, 14, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });

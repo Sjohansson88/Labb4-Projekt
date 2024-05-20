@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SUT23_Labb4.Migrations;
+
 using SUT23_Labb4Models;
 
 namespace SUT23_Labb4.Data
