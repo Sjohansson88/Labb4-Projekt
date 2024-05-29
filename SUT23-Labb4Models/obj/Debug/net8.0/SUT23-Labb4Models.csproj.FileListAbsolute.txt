@@ -1,0 +1,11 @@
+C:\Users\sjoha\OneDrive\Skrivbord\SUT23\SUT23-Labb4Models\bin\Debug\net8.0\SUT23-Labb4Models.deps.json
+C:\Users\sjoha\OneDrive\Skrivbord\SUT23\SUT23-Labb4Models\bin\Debug\net8.0\SUT23-Labb4Models.dll
+C:\Users\sjoha\OneDrive\Skrivbord\SUT23\SUT23-Labb4Models\bin\Debug\net8.0\SUT23-Labb4Models.pdb
+C:\Users\sjoha\OneDrive\Skrivbord\SUT23\SUT23-Labb4Models\obj\Debug\net8.0\SUT23-Labb4Models.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\sjoha\OneDrive\Skrivbord\SUT23\SUT23-Labb4Models\obj\Debug\net8.0\SUT23-Labb4Models.AssemblyInfoInputs.cache
+C:\Users\sjoha\OneDrive\Skrivbord\SUT23\SUT23-Labb4Models\obj\Debug\net8.0\SUT23-Labb4Models.AssemblyInfo.cs
+C:\Users\sjoha\OneDrive\Skrivbord\SUT23\SUT23-Labb4Models\obj\Debug\net8.0\SUT23-Labb4Models.csproj.CoreCompileInputs.cache
+C:\Users\sjoha\OneDrive\Skrivbord\SUT23\SUT23-Labb4Models\obj\Debug\net8.0\SUT23-Labb4Models.dll
+C:\Users\sjoha\OneDrive\Skrivbord\SUT23\SUT23-Labb4Models\obj\Debug\net8.0\refint\SUT23-Labb4Models.dll
+C:\Users\sjoha\OneDrive\Skrivbord\SUT23\SUT23-Labb4Models\obj\Debug\net8.0\SUT23-Labb4Models.pdb
+C:\Users\sjoha\OneDrive\Skrivbord\SUT23\SUT23-Labb4Models\obj\Debug\net8.0\ref\SUT23-Labb4Models.dll
