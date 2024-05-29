@@ -47,10 +47,10 @@ namespace SUT23_Labb4.Services
                 _dbContext.BookingHistories.Add(history);
                 await _dbContext.SaveChangesAsync();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                _logger.LogError(ex, "Error occurred while adding booking");
-                throw new Exception("Error occurred while adding booking: " + ex.Message);
+                _logger.LogError("Error occurred while adding booking");
+                throw new Exception("Error occurred while adding booking: ");
             }
         }
 
@@ -128,13 +128,13 @@ namespace SUT23_Labb4.Services
 {
     try
     {
-        // Beräkna startdatumet för veckan med hjälp av den nya metoden
+        
         var startDateOfWeek = GetStartDateOfWeek(weekNumber);
 
-        // Beräkna slutdatumet för veckan genom att lägga till 6 dagar till startdatumet
+      
         var endDateOfWeek = startDateOfWeek.AddDays(6).AddHours(23).AddMinutes(59).AddSeconds(59);
 
-        // Hämta bokningar för den angivna veckan från databasen
+       
         var bookings = await _dbContext.Appointments
             .Where(a => a.CompanyId == companyId && a.StartTime >= startDateOfWeek && a.StartTime <= endDateOfWeek)
             .ToListAsync();
@@ -162,7 +162,7 @@ namespace SUT23_Labb4.Services
                     throw new Exception("Booking not found");
                 }
 
-                // Skapa en ny post i BookingHistory för den uppdaterade bokningen
+              
                 var bookingHistory = new BookingHistory
                 {
                     BookingId = bookingId,
@@ -170,17 +170,17 @@ namespace SUT23_Labb4.Services
                     OldEndTime = booking.EndTime,
                     NewStartTime = startTime,
                     NewEndTime = endTime,
-                    ChangedAt = DateTime.UtcNow, // Ange aktuell tidsstampel när bokningen uppdaterades
-                    ChangedBy = changedBy // Ange användaren som gjorde ändringen
+                    ChangedAt = DateTime.UtcNow,
+                    ChangedBy = changedBy 
                 };
 
-                _dbContext.BookingHistories.Add(bookingHistory); // Lägg till posten i historien
+                _dbContext.BookingHistories.Add(bookingHistory); 
 
-                // Uppdatera bokningen med nya värden
+               
                 booking.StartTime = startTime;
                 booking.EndTime = endTime;
 
-                await _dbContext.SaveChangesAsync(); // Spara ändringar i databasen
+                await _dbContext.SaveChangesAsync();
             }
             catch (Exception)
             {

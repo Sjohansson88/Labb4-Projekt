@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SUT23_Labb4.Services;
@@ -19,6 +20,7 @@ namespace SUT23_Labb4.Controllers
 
 
         [HttpPost("AddBooking")]
+        [Authorize]
         public async Task<IActionResult> AddBooking(int customerId, DateTime startTime, DateTime endTime, int companyId, string createdBy)
         {
             try
@@ -35,6 +37,7 @@ namespace SUT23_Labb4.Controllers
 
 
         [HttpPut("UpdateBooking/{bookingId}")]
+        [Authorize]
         public async Task<IActionResult> UpdateBooking(int bookingId, DateTime startTime, DateTime endTime, string changedBy)
         {
             try
@@ -51,6 +54,7 @@ namespace SUT23_Labb4.Controllers
 
 
         [HttpDelete("CancelBooking/{bookingId}")]
+        [Authorize]
         public async Task<IActionResult> DeleteBooking(int bookingId, string deletedBy)
         {
             try
@@ -71,6 +75,7 @@ namespace SUT23_Labb4.Controllers
 
 
         [HttpGet("GetCompanyBookingsForMonth/{companyId}/{year}/{month}")]
+        [Authorize]
         public async Task<IActionResult> GetCompanyBookingsForMonth(int companyId, int year, int month)
         {
             try
@@ -92,6 +97,7 @@ namespace SUT23_Labb4.Controllers
 
 
         [HttpGet("GetCompanyBookingsForWeek/{companyId}/{year}/{weekNumber}")]
+        [Authorize]
         public async Task<IActionResult> GetCompanyBookingsForWeek(int companyId, int year, int weekNumber)
         {
             try
@@ -113,6 +119,7 @@ namespace SUT23_Labb4.Controllers
 
 
         [HttpGet("GetAllBookingHistory")]
+        [Authorize]
         public async Task<IActionResult> GetAllBookingHistory()
         {
             try

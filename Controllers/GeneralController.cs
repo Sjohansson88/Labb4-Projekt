@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SUT23_Labb4.Services;
 
@@ -16,7 +17,8 @@ namespace SUT23_Labb4.Controllers
         }
 
 
-        [HttpGet("All Customer")] //Funkar bra. 
+        [HttpGet("All Customer")]
+        [Authorize]
         public async Task<IActionResult> GetAllCustomer()
         {
             try
@@ -30,7 +32,8 @@ namespace SUT23_Labb4.Controllers
             }
         }
 
-        [HttpGet("Customer{id:int}")]  //Funkar
+        [HttpGet("Customer{id:int}")]
+        [Authorize]
         public async Task<IActionResult> GetCustomerById(int id)
         {
             try
@@ -49,6 +52,7 @@ namespace SUT23_Labb4.Controllers
         }
 
         [HttpGet("CustomersWithBookingsNext7Days")]
+        [Authorize]
         public async Task<IActionResult> GetCustomersWithBookingsNext7Days()
         {
             try
@@ -69,6 +73,7 @@ namespace SUT23_Labb4.Controllers
 
 
         [HttpGet("NumberOfBookingsForCustomerInWeek")]
+        [Authorize]
         public async Task<IActionResult> GetNumberOfBookingsForCustomerInWeek(int customerId, int weekNumber)
         {
             try

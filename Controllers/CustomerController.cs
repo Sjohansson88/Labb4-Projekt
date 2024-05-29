@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using SUT23_Labb4.Services;
 
 namespace SUT23_Labb4.Controllers
@@ -8,7 +10,6 @@ namespace SUT23_Labb4.Controllers
     [ApiController]
     public class CustomerController : ControllerBase
     {
-
         private ICustomer _customer;
 
         public CustomerController(ICustomer customer)
@@ -16,49 +17,43 @@ namespace SUT23_Labb4.Controllers
             _customer = customer;
         }
 
-
-
         [HttpPost("AddBooking")]
-        public async Task<IActionResult> AddBooking(int customerId, DateTime startTime, DateTime endTime, int companyId)
+        [Authorize]
+        public async Task<IActionResult> AddBooking(int customerId, DateTime startTime, DateTime endTime, int companyId, string createdBy)
         {
             try
             {
-                await _customer.AddBooking(customerId, startTime, endTime, companyId);
+                await _customer.AddBooking(customerId, startTime, endTime, companyId, createdBy);
                 return Ok(new { message = "Booking added successfully" });
             }
             catch (Exception)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Error to add Data to Database");
+                return StatusCode(StatusCodes.Status500InternalServerError, new { message = "Error occurred while adding booking" });
             }
         }
-
 
         [HttpPut("UpdateBooking/{bookingId}")]
-        public async Task<IActionResult> UpdateBooking(int bookingId, DateTime startTime, DateTime endTime)
+        [Authorize]
+        public async Task<IActionResult> UpdateBooking(int bookingId, DateTime startTime, DateTime endTime, string changedBy)
         {
             try
             {
-                await _customer.UpdateBooking(bookingId, startTime, endTime);
+                await _customer.UpdateBooking(bookingId, startTime, endTime, changedBy);
                 return Ok(new { message = "Booking updated successfully" });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                if (ex.Message == "Booking not found")
-                {
-                    return NotFound(new { message = ex.Message });
-                }
-                return StatusCode(StatusCodes.Status500InternalServerError, "Error to update Data from Database");
+                return StatusCode(StatusCodes.Status500InternalServerError, new { message = "Error occurred while updating booking" });
             }
         }
 
-
-
         [HttpDelete("CancelBooking/{bookingId}")]
-        public async Task<IActionResult> CancelBooking(int bookingId)
+        [Authorize]
+        public async Task<IActionResult> DeleteBooking(int bookingId, string deletedBy)
         {
             try
             {
-                await _customer.CancelBooking(bookingId);
+                await _customer.DeleteBooking(bookingId, deletedBy);
                 return Ok(new { message = "Booking cancelled successfully" });
             }
             catch (Exception ex)
@@ -67,16 +62,12 @@ namespace SUT23_Labb4.Controllers
                 {
                     return NotFound(new { message = ex.Message });
                 }
-                return StatusCode(500, $"Internal server error: {ex.Message}");
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error to delete Data from Database");
             }
         }
 
-
-
-
-
-
         [HttpGet("Customer{id:int}")]  //Funkar
+        [Authorize]
         public async Task<IActionResult> GetCustomerById(int id)
         {
             try
